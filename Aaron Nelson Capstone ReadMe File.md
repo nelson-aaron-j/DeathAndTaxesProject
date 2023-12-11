@@ -42,10 +42,19 @@ Known Issues and Challenges
 
 
 Project Process:
-Acquired assorted population data from https://www.census.gov
+    Data Cleaning
+
+Population data:
+https://ghdx.healthdata.org/record/ihme-data/united-states-life-expectancy-by-county-race-ethnicity-2000-2019
+https://www.statsamerica.org/downloads/default.aspx   
+ https://www.census.gov
 Data .csvfiles used includes:
 Components of Population Change - US, States, Counties
 Population by Age and Sex - US, States, Counties
 Population_estimates_US_States_Counties
+This data was imported into Python then filtered down to year 2019. Year 2019 was chosen because it was the last year prior to covid pandemic. Addiotnally, 2019 was chosen because not all tax data is avaiable for more recent years (2022-2023), where the covid pandemic might no longer be affecting mortality rates. 
+In generating the population table data 6 different tables were used from the websites mentioned above. All tables were merged using statefips, countyfips or location descriptions. 
 
-This data was imported into Python then filtered down to year 2019. Year 2019 was chosen because it was the last year prior to covid pandemic. Addiotnally, 2019 was chosen becasue tax data is not all tax data is avaiable for more recent years (2022-2023), where the covid pandemic might no longer be affecting mortality rates. 
+State Financial data:
+https://www.census.gov/data/datasets/2019/econ/local/public-use-datasets.html
+Data was brought into python as a .xlsx file and various extra rows and columns were removed as well as some renamed for ease of use later on. Table twas then joined with a dataframe derived from the population dataframe so that statefip codes were now avaiable which could then be used later on for filter/ sorting/ etc. 
