@@ -41,20 +41,33 @@ Known Issues and Challenges
 
 
 
-Project Process:
-    Data Cleaning
+Creation of the following file folders inside primary folder is recommended in order to correctly run code
+"notebooks"
+"images"
+"data"
+"cleaned_data"
+".ipynb_checkpoints"
 
-Population data:
-https://ghdx.healthdata.org/record/ihme-data/united-states-life-expectancy-by-county-race-ethnicity-2000-2019
-https://www.statsamerica.org/downloads/default.aspx   
- https://www.census.gov
-Data .csvfiles used includes:
-Components of Population Change - US, States, Counties
-Population by Age and Sex - US, States, Counties
-Population_estimates_US_States_Counties
-This data was imported into Python then filtered down to year 2019. Year 2019 was chosen because it was the last year prior to covid pandemic. Addiotnally, 2019 was chosen because not all tax data is avaiable for more recent years (2022-2023), where the covid pandemic might no longer be affecting mortality rates. 
-In generating the population table data 6 different tables were used from the websites mentioned above. All tables were merged using statefips, countyfips or location descriptions. 
+All data downloaded from various data sources websites should be placed inside "data" folder.
+See data sources listed above
 
-State Financial data:
-https://www.census.gov/data/datasets/2019/econ/local/public-use-datasets.html
-Data was brought into python as a .xlsx file and various extra rows and columns were removed as well as some renamed for ease of use later on. Table twas then joined with a dataframe derived from the population dataframe so that statefip codes were now avaiable which could then be used later on for filter/ sorting/ etc. 
+
+
+Running code:
+All python notebooks can be found in the "notebooks" folder
+
+    "population_notebook" contains all population data and is organized using state and county fips codes. 
+Data for this notebook comes from the following .csv files located in the "data" folder
+(data/Population_estimates_US_States_Counties.csv) 
+(data/CEW - US, States, Counties - Total Ownership.csv) 
+(data/Components of Population Change - US, States, Counties.csv) 
+(data/fips_table.csv) 
+(data/IHME_USA_LE_COUNTY_RACE_ETHN_2000_2019_LT_2019_BOTH_Y2022M06D16.CSV) 
+(data/Population by Age and Sex - US, States, Counties.csv)
+
+    "state_returns_notebook" contains information related to individual tax returns aggreagated by region
+data for this notebook is from  https://www.irs.gov/statistics/soi-tax-stats-individual-income-tax-statistics-2019-zip-code-data-soi website using the .xlsx file
+In order to correctly read run this code in python the file must first be opened in excel and alterations be made. On row 4, starting at column U the cell must be ungrouped. The ungrouped cell must then be duplicated and pasted into the empty cell to the right of it. Finally, The orignal cell must be modified so that " #" immediatly follows any words. 
+EXAMPLE: Cell U:4 = Total income # Cell V:4 = Total income. 
+This must be done for any column where in row 5 the column states "amount" or "number of returns"
+The purpose of this is python has a difficult time handling columns with the same name. By adding a " #" to the column title, python is then able to distinquish the name and apply any changes to columns only containg a "#" value.
