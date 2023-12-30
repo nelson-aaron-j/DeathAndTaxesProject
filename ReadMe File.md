@@ -1,4 +1,6 @@
-Aaron Nelson Capstone
+Death And Taxes Readme
+
+
 Executive Summary
 Embarking on the exploration of the enduring idea that life's only certainties are death and taxes, this project seeks to unveil whether there's a significant connection between individuals' tax contributions and their life expectancy. I am particularly intrigued by the prospect of understanding if there are variations in life expectancy between regions with different tax burdens. Through the examination of various tax categories—federal, state, property, and sales, etc.—the aim is to determine how taxes might influence life expectancy. Beyond these considerations, the project also plans to delve into the intricate dynamics of how government spending from tax revenues might impact life expectancy, especially in critical areas like healthcare and social programs. Acknowledging the inherent complexity, this effort is driven by the desire to comprehensively grasp the relationship between taxes and life expectancy in a straightforward and accessible manner.
 
@@ -47,15 +49,15 @@ Creation of the following file folders inside primary folder is recommended in o
 "data"
 "cleaned_data"
 ".ipynb_checkpoints"
-
 All data downloaded from various data sources websites should be placed inside "data" folder.
 See data sources listed above
-
 
 
 Running code:
 All python notebooks can be found in the "notebooks" folder
 
+
+Run 1st.
     "population_notebook" contains all population data and is organized using state and county fips codes. 
 Data for this notebook comes from the following .csv files located in the "data" folder
 (data/Population_estimates_US_States_Counties.csv) 
@@ -65,9 +67,30 @@ Data for this notebook comes from the following .csv files located in the "data"
 (data/IHME_USA_LE_COUNTY_RACE_ETHN_2000_2019_LT_2019_BOTH_Y2022M06D16.CSV) 
 (data/Population by Age and Sex - US, States, Counties.csv)
 
+
+Run 2nd.
     "state_returns_notebook" contains information related to individual tax returns aggreagated by region
 data for this notebook is from  https://www.irs.gov/statistics/soi-tax-stats-individual-income-tax-statistics-2019-zip-code-data-soi website using the .xlsx file
 In order to correctly read run this code in python the file must first be opened in excel and alterations be made. On row 4, starting at column U the cell must be ungrouped. The ungrouped cell must then be duplicated and pasted into the empty cell to the right of it. Finally, The orignal cell must be modified so that " #" immediatly follows any words. 
 EXAMPLE: Cell U:4 = Total income # Cell V:4 = Total income. 
 This must be done for any column where in row 5 the column states "amount" or "number of returns"
 The purpose of this is python has a difficult time handling columns with the same name. By adding a " #" to the column title, python is then able to distinquish the name and apply any changes to columns only containg a "#" value.
+
+
+Run 3rd.
+    "state_finances_notebook" contains information related to state revenue and expenditure information. 
+Data from notebook comes from https://www.census.gov/data/datasets/2019/econ/local/public-use-datasets.html using the .xlsx "US summary & State Estimates Tables."
+ Minor changes to .xlsx file will need to be made for ease of use in python. 
+Column B rows 17:77 - the word "revenue" should be added to the end of the description if the word "revenue" does not already exist in the description. 
+Column B rows 81:168 - the word "expenditure" should be added to the end of the description if the word "expenditure" does not already exist in the description. 
+The following rows should be the sum of the rows below for columns C-JB
+98 is the sum of 99-106
+108 is the sum of 109-117
+119 is the sum of 120-124
+126 is the sum of 127-131
+144 is the sum of 145-149
+151 is the sum of 152-153
+
+
+Run last
+    "master_table_notebook" contains all the cleaned tables from all the other notebooks combined. This notebook must be run last as it utlizes the .csv files generated from the other notebooks. AS this is the final notebook, the .csv file generated from this notebook will be used to create the Tableau dashboard. 
