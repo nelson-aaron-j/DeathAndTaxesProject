@@ -55,6 +55,7 @@ See data sources listed above
 
 Running code:
 All python notebooks can be found in the "notebooks" folder
+It is recommended to run notebooks in the suggeted order as the .csv files generated from one notebooks will be used in later notebooks.
 
 
 Run 1st.
